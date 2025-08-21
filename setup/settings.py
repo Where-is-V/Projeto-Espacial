@@ -126,6 +126,9 @@ USE_TZ = True
 # STATIC_URL = '/static/'
 
 STATIC_URL = os.getenv('RAILWAY_STATIC_URL', '/static/')
+if not STATIC_URL.endswith('/'):
+    STATIC_URL += '/'
+
 
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'setup/static')
