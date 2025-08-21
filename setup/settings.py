@@ -125,8 +125,10 @@ USE_TZ = True
 # STATIC_URL
 # STATIC_URL = '/static/'
 
-STATIC_URL = os.getenv('/static/')
-if not STATIC_URL.endswith('/'):
+STATIC_URL = os.getenv('RAILWAY_STATIC_URL')
+if not STATIC_URL:
+    STATIC_URL = '/static/'
+elif not STATIC_URL.endswith('/'):
     STATIC_URL += '/'
 
 
