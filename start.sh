@@ -17,5 +17,5 @@ if not User.objects.filter(username=username).exists():
     User.objects.create_superuser(username=username, email=email, password=password)
 END
 
-# Inicia o servidor
-gunicorn setup.wsgi:application --bind 0.0.0.0:$PORT
+# Inicia o servidor e mantém o processo ativo
+exec gunicorn setup.wsgi:application --bind 0.0.0.0:$PORT
